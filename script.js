@@ -18,11 +18,36 @@ function playRound(playerSelection, computerChoice){
     }
 }
 
-function playGame(){
+// function playGame(){
+//     const playerSelection = document.getElementById("userChoice").value.toLowerCase();
+//     const computerChoice = getcomputerChoice();
+//     const result = playRound(playerSelection, computerChoice);
+//     const resultElement = document.getElementById("result");
+
+//     resultElement.textContent = result;
+// }
+
+let gameResults = [];
+
+let gameCount = 0;
+
+function game(){
+    if(gameCount < 5){
     const playerSelection = document.getElementById("userChoice").value.toLowerCase();
     const computerChoice = getcomputerChoice();
     const result = playRound(playerSelection, computerChoice);
-    const resultElement = document.getElementById("result");
+    
+    gameResults.push(result);
 
+    gameCount++;
+
+    const resultElement = document.getElementById("result");
     resultElement.textContent = result;
+
+    if(gameCount === 5){
+        resultElement.textContent += "\nGame Over! Results: " + gameResults.join(", ");
+    } else {
+        resultElement.textContent = "Game Over! Results: " + gameResults.join(", ");
+    }
+}
 }
